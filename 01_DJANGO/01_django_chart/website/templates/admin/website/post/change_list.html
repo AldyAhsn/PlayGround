@@ -3,7 +3,31 @@
 {% block content %}
 
 <h1>Custom message!</h1>
+<div id="chart" style="margin-bottom:5rem;display"></div>
 
 <!-- Render the rest of the ChangeList view by calling block.super -->
 {{ block.super }}
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    window.addEventListener('load', (event) => {
+        var options = {
+            chart: {
+                type: 'line',
+                height: 200,
+                width: '100%'
+            },
+            series: [{
+                name: 'sales',
+                data: [30, 40, 35, 50, 49, 30, 30, 40, 325]
+            }],
+            xaxis: {
+                categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+            }
+        }
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+        chart.render();
+    });
+</script>
 {% endblock %}
