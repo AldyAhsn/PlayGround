@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        swiper-slide{
+            border: solid black 1px;
+            position: relative;
+            width: 100%;
+            height: 95vh;
+        }
+
+        .point{
+            border-radius:50%;
+            background-color: red;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+    <swiper-container>
+        <swiper-slide>
+            Slide 1
+            <button class="point" style="top:0%;left:0%;">1</button>
+            <button class="point" style="top:10%;left:20%;">2</button>
+            <button class="point" style="top:30%;left:40%;">3</button>
+            <button class="point" style="top:6%;left:50%;">4</button>
+            <button class="point" style="top:8%;left:80%;">5</button>
+        </swiper-slide>
+        <swiper-slide>Slide 2</swiper-slide>
+        <swiper-slide>Slide 3</swiper-slide>
+        <swiper-slide>Slide ...</swiper-slide>
+    </swiper-container>
+
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/photoswipe/dist/photoswipe.css">
+    <style>
+        .pswp__point {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: red;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="pswp-gallery" id="my-gallery">
+        <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-2500.jpg" data-pswp-width="1875"
+            data-pswp-height="2500" target="_blank">
+            <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-200.jpg" alt="" />
+        </a>
+        <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg" data-pswp-width="1669"
+            data-pswp-height="2500" target="_blank">
+            <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg" alt="" />
+        </a>
+        <a href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-2500.jpg" data-pswp-width="2500"
+            data-pswp-height="1666" target="_blank">
+            <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-200.jpg" alt="" />
+        </a>
+    </div>
+
+
+    <script type="module">
+        // Include Lightbox 
+        import PhotoSwipeLightbox from './node_modules/photoswipe/dist/photoswipe-lightbox.esm.js';
+        import PhotoSwipe from './node_modules/photoswipe/dist/photoswipe.esm.js';
+
+        const leftArrowSVGString = '<svg aria-hidden="true" class="pswp__icn" viewBox="0 0 100 125" width="100" height="125"><path d="M5,50L50,5l3,3L11,50l42,42l-3,3L5,50z M92,95l3-3L53,50L95,8l-3-3L47,50L92,95z"/></svg>';
+
+        const options = {
+            arrowPrevSVG: leftArrowSVGString,
+            arrowNextSVG: leftArrowSVGString,
+            // to apply styles just to this instance of PhotoSwipe
+            mainClass: 'pswp--custom-icon-colors',
+            showHideAnimationType: 'zoom',
+            gallery: '#my-gallery',
+            children: 'a',
+            pswpModule: PhotoSwipe,
+
+        };
+
+        const lightbox = new PhotoSwipeLightbox(options);
+        lightbox.on('uiRegister', function () {
+            lightbox.pswp.ui.registerElement({
+                name: 'tes123',
+                order: 8,
+                tagName: 'div',
+                className: 'tes123-class',
+                onInit: (el, ps) => {
+                    console.log(el);
+
+                    el.style.border = 'solid white 1px';
+                    el.style.position = 'absolute';
+                    el.style.top = '0%';
+                    el.style.left = '0%';
+                    el.style.width = "100%";
+                    el.style.height = "100vh";
+
+                    let point = document.createElement('button');
+                    point.className = 'pswp__point';
+                    point.style.position = 'absolute';
+                    point.style.top = '0%';
+                    point.style.left = '90%';
+                    point.addEventListener('click', function () {
+                        alert('Hellow');
+                    })
+                    el.appendChild(point);
+
+
+                    ps.on('change', (a,) => {
+                        
+                    });
+
+                },
+
+
+            });
+        });
+
+        lightbox.init();
+    </script>
+</body>
+
+</html>
